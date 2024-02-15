@@ -11,6 +11,7 @@ def connect_to_db():
         conn = psycopg2.connect(
             database="dhbw", 
             user="postgres", 
+            password=password, 
             host="localhost", 
             port="5432"
         )
