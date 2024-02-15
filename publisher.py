@@ -9,7 +9,7 @@ mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "K$PPfGKnJGaTqcEdPo^BDWQnD
 mqttc.connect("broker.hivemq.com", 1883, 60)
 print("Connected to broker")
 
-# Publish a message every 2 seconds
+# Publish a message every 5 seconds
 while True:
         start_time = time.time()
 
@@ -27,5 +27,5 @@ while True:
         elapsed_time = time.time() - start_time
 
         # Calculate the sleep time and sleep
-        sleep_time = max(0, 2 - elapsed_time)  # Ensure a minimum wait of 2 seconds
+        sleep_time = max(0, 5 - elapsed_time)  # Ensure a minimum wait of 5 seconds
         time.sleep(sleep_time)
