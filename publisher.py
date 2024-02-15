@@ -3,7 +3,7 @@ import json
 import time
 import random
 
-fins = ["MS.CARRIAGE444", "FEFFEFEFEFEFE6969"]
+fins = ["MS.CARRIAGE444444", "FEFFEFEFEFEFE6969"] #17-Stellige FINS
 
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "K$PPfGKnJGaTqcEdPo^BDWQnDk##wgjyaC#7wCNT6^owmJu2sPx^PBM8qvERQCrmuL#iDC*zfm8cCuwVs&yxTbP@rNihE9ctAeY6$CwUom%aZtDA4%FpYikGYfbeC*m4", clean_session=False)
 mqttc.connect("broker.hivemq.com", 1883, 60)
@@ -18,7 +18,7 @@ while True:
         msg = {
             "fin": random.choice(fins),
             "zeit": currentmillissinceepoch,
-            "geschwindigkeit": random.randint(0, 3000),
+            "geschwindigkeit": random.randint(0, 50),
         }
         mqttc.publish("DataMgmt", json.dumps(msg), qos=1)
         print("Published message: " + str(msg))
