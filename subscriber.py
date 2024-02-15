@@ -2,7 +2,15 @@ import paho.mqtt.client as mqtt
 def on_message(client, userdata, message):
 
 #<JSON Message in DB-Tabelle staging.messung schreiben>
-mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "#ID DIFFERENT to subscriber", clean_session=False)
-mqttc.on_message = on_message
-mqttc.connect("broker.hivemq.com", 1883, 60)
-mqttc.subscribe("DataMgmt", qos=1)
+
+from db import create_table_if_not_exist
+
+
+def main():
+    # Your primary program logic goes here
+    print("This is inside the main function")
+    create_table_if_not_exist()
+    print("This is the end of the main function")
+
+if __name__ == "__main__":
+    main()
