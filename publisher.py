@@ -9,6 +9,7 @@ mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "K$PPfGKnJGaTqcEdPo^BDWQnD
 mqttc.connect("broker.hivemq.com", 1883, 60)
 print("Connected to broker")
 
+# Publish a message every 2 seconds
 while True:
         start_time = time.time()
 
