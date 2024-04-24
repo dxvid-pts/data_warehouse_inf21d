@@ -1,0 +1,29 @@
+name: CI/CD Pipeline für Fallstudie
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  test-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Python-Umgebung installieren
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Abhängigkeiten installieren
+        run: pip install -r requirements.txt
+
+      - name: Code-Formatierung überprüfen (black)
+        run: black .
+
+      - name: Importe sortieren (isort)
+        run: isort .
+        
