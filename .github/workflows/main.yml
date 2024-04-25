@@ -21,10 +21,6 @@ jobs:
       - name: Abhängigkeiten installieren
         run: pip install -r requirements.txt
 
-      - name: Code-Formatierung durchführen (black)
-        continue-on-error: true
+      - name: Code-Formatierung überprüfen (black)
         run: |
-          black .
-          git diff --exit-code
-          exit_code=$? # Capture the exit code
-          echo "The exit code is $exit_code"
+          black . --check --diff
