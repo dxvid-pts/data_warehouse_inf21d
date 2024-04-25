@@ -2,9 +2,9 @@ name: CI/CD Pipeline für Fallstudie
 
 on:
   push:
-    branches: [ dev ]
+    branches: [dev]
   pull_request:
-    branches: [ dev ]
+    branches: [dev]
 
 jobs:
   test-and-validate:
@@ -21,9 +21,7 @@ jobs:
       - name: Abhängigkeiten installieren
         run: pip install -r requirements.txt
 
-      - name: Code-Formatierung überprüfen (black)
-        run: black .
-
-      - name: Importe sortieren (isort)
-        run: isort .
-        
+      - name: Code-Formatierung durchführen (black)
+        run: |
+          git diff --exit-code || { echo "[AUTOMATTED CHANGE] Code formatting" && git commit -am "[AUTOMATTED CHANGE] Code formatting"; }
+          black .
