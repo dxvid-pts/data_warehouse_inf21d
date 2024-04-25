@@ -27,7 +27,9 @@ jobs:
           black .
           echo "Code-Formatierung abgeschlossen"
           git config --global user.name 'github-actions'
+          echo "Setting up git user"
           git config --global user.email 'github-actions@github.com'
+          echo "Adding changes to git"
           git add -A
           echo "Checking for formatting changes"
           git diff --cached --exit-code --quiet
