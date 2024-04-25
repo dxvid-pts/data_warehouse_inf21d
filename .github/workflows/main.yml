@@ -19,7 +19,9 @@ jobs:
           python-version: '3.x'
 
       - name: Abhängigkeiten installieren
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install black isort pylint
 
       - name: Code-Formatierung überprüfen (black)
         run: black . --check --diff
