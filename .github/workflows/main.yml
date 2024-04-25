@@ -23,7 +23,9 @@ jobs:
 
       - name: Code-Formatierung durchführen (black)
         run: |
+          echo "Code-Formatierung durchführen"
           black .
+          echo "Code-Formatierung abgeschlossen"
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add -A
