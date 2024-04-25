@@ -1,3 +1,5 @@
+"""Subscribes to the topic "DataMgmt" and writes the received messages to the database."""
+
 import json
 
 import paho.mqtt.client as mqtt
@@ -9,7 +11,8 @@ create_table_if_not_exist()
 
 
 # When a message is received, write it to the database
-def on_message(client, userdata, message):
+def on_message(_, __, message):
+    """Writes the received message to the database."""
     print("Received message: " + str(message.payload))
     # Write the message to the database
     write_row(json.loads(message.payload))
@@ -18,7 +21,8 @@ def on_message(client, userdata, message):
 # Establish a connection to the broker and subscribe to the topic "DataMgmt"
 mqttc = mqtt.Client(
     mqtt.CallbackAPIVersion.VERSION2,
-    "j@L&DFTofpqqZ2Vkuu3VJT6AxmNU3m7dTt&CVdaomPqdjxncbjhRVms62TQh8QPEtpCZpHndC@%T!JS8Q%g$QoQcD&!tCVe$nv@DpidnU8tTjzpKeP&NqkcymX*i8gJH",
+    """j@L&DFTofpqqZ2Vkuu3VJT6AxmNU3m7dTt&CVdaomPqdjxncbjhRVms62TQh8QPEtp
+    CZpHndC@%T!JS8Q%g$QoQcD&!tCVe$nv@DpidnU8tTjzpKeP&NqkcymX*i8gJH""",
     clean_session=False,
 )
 mqttc.on_message = on_message

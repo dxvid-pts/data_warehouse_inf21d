@@ -1,3 +1,5 @@
+"""Helper functions to interact with the database."""
+
 import json
 import os
 
@@ -19,7 +21,7 @@ def connect_to_db():
         )
         cursor = conn.cursor()
         return conn, cursor
-    except (Exception, psycopg2.DatabaseError) as error:
+    except (psycopg2.DatabaseError) as error:
         print(error)
         return None, None
 
@@ -47,7 +49,7 @@ def create_table_if_not_exist():
             """
             cursor.execute(create_table_query)
             conn.commit()
-        except (Exception, psycopg2.DatabaseError) as error:
+        except (psycopg2.DatabaseError) as error:
             print(error)
         finally:
             cursor.close()
@@ -66,7 +68,7 @@ def write_row(payload):
             """
             cursor.execute(insert_query, (json.dumps(payload),))
             conn.commit()
-        except (Exception, psycopg2.DatabaseError) as error:
+        except (psycopg2.DatabaseError) as error:
             print(error)
         finally:
             cursor.close()
