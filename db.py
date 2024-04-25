@@ -3,6 +3,8 @@ import json
 import psycopg2
 
 import os
+
+
 def connect_to_db():
     """
     Creates a connection to the database and returns the connection and cursor.
