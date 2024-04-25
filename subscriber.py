@@ -9,7 +9,7 @@ create_table_if_not_exist()
 
 
 # When a message is received, write it to the database
-def on_message(client, userdata, message):
+def on_message(client, userdata,     message):
     print("Received message: " + str(message.payload))
     # Write the message to the database
     write_row(json.loads(message.payload))
