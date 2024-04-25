@@ -33,6 +33,7 @@ jobs:
           git add -A
           echo "Checking for formatting changes"
           git diff --cached --exit-code --quiet
+          echo "checked for formatting changes"
           if [ $? -ne 0 ]; then
             echo "Code-Formatierung notwendig"
             git commit -m "[AUTOMATED CHANGE] Code formatting"
