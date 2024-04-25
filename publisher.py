@@ -1,3 +1,5 @@
+"""Publisher that sends random data to the MQTT broker every 5 seconds."""
+
 import json
 import random
 import time
@@ -8,7 +10,8 @@ fins = ["MS.CARRIAGE444444", "FEFFEFEFEFEFE6969"]  # 17-Stellige FINS
 
 mqttc = mqtt.Client(
     mqtt.CallbackAPIVersion.VERSION2,
-    "K$PPfGKnJGaTqcEdPo^BDWQnDk##wgjyaC#7wCNT6^owmJu2sPx^PBM8qvERQCrmuL#iDC*zfm8cCuwVs&yxTbP@rNihE9ctAeY6$CwUom%aZtDA4%FpYikGYfbeC*m4",
+    """K$PPfGKnJGaTqcEdPo^BDWQnDk##wgjyaC#7wCNT6^owmJu2sPx^PBM8qvERQC
+    rmuL#iDC*zfm8cCuwVs&yxTbP@rNihE9ctAeY6$CwUom%aZtDA4%FpYikGYfbeC*m4""",
     clean_session=False,
 )
 mqttc.connect("broker.hivemq.com", 1883, 60)
