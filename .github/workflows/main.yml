@@ -23,7 +23,16 @@ jobs:
 
       - name: Code-Formatierung durchführen (black)
         run: |
-          black . --check --diff || false
-            if [ $? -ne 0 ]; then
-              echo "Code-Formatierung notwendig"
-            fi
+          black .
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add -A
+          git diff --cached --exit-code --quiet
+          if [ $? -ne 0 ]; then
+            echo "Code-Formatierung notwendig"
+            git commit -m "[AUTOMATED CHANGE] Code formatting"
+            git push
+          else
+            echo "Keine Formatierungsänderungen notwendig."
+          fi
+      
