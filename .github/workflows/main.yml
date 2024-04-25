@@ -23,6 +23,7 @@ jobs:
 
       - name: Code-Formatierung durchführen (black)
         run: |
-          black . && git diff --exit-code
+          black .
+          git diff --exit-code
           exit_code=$? # Capture the exit code
           echo "The exit code is $exit_code"
