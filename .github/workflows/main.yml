@@ -39,5 +39,6 @@ jobs:
             git push
           else
             echo "Keine Formatierungsänderungen notwendig."
+          fi
       
       
