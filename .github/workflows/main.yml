@@ -22,9 +22,10 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Code-Formatierung überprüfen (black)
-        run: |
-          black . --check --diff
+        run: black . --check --diff
       
       - name: Import-Ordnung überprüfen (isort)
-        run: |
-          isort . --check --diff
+        run: isort . --check --diff
+
+      - name: Code-Qualität überprüfen (pylint)
+        run: find . -name '*.py' | xargs pylint
