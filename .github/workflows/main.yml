@@ -27,12 +27,11 @@ jobs:
           black .
           echo "Code-Formatierung abgeschlossen"
           git config --global user.name 'github-actions'
-          echo "Setting up git user"
           git config --global user.email 'github-actions@github.com'
-          echo "Adding changes to git"
           git add -A
           echo "Checking for formatting changes"
-          git diff --cached --exit-code --quiet
+          # Allow this command to fail without stopping the workflow
+          git diff --cached --exit-code --quiet || true
           echo "checked for formatting changes"
           if [ $? -ne 0 ]; then
             echo "Code-Formatierung notwendig"
@@ -40,5 +39,5 @@ jobs:
             git push
           else
             echo "Keine Formatierungsänderungen notwendig."
-          fi
+      
       
