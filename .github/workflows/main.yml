@@ -19,11 +19,15 @@ jobs:
           python-version: '3.x'
 
       - name: Abhängigkeiten installieren
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install black isort pylint
 
       - name: Code-Formatierung überprüfen (black)
-        run: black .
+        run: black . --check --diff
+      
+      - name: Import-Ordnung überprüfen (isort)
+        run: isort . --check --diff
 
-      - name: Importe sortieren (isort)
-        run: isort .
-        
+      - name: Code-Qualität überprüfen (pylint)
+        run: find . -name '*.py' | xargs pylint
