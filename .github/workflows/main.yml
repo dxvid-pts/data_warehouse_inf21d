@@ -23,7 +23,7 @@ jobs:
 
       - name: Code-Formatierung durchführen (black)
         run: |
-          black . --check --diff
+          black . --check --diff || false
           if [ $? -ne 0 ]; then
             echo "Code-Formatierung notwendig"
             black .
