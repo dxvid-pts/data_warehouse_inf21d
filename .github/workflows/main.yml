@@ -24,3 +24,7 @@ jobs:
       - name: Code-Formatierung überprüfen (black)
         run: |
           black . --check --diff
+      
+      - name: Import-Ordnung überprüfen (isort)
+        run: |
+          isort . --check --diff
