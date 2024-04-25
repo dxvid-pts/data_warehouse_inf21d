@@ -22,4 +22,5 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Code-Formatierung durchführen (black)
-        run: black . && git diff --exit-code
+        run: |
+          black . && git diff --exit-code
