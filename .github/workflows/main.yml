@@ -27,6 +27,7 @@ jobs:
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add -A
+          echo "Checking for formatting changes"
           git diff --cached --exit-code --quiet
           if [ $? -ne 0 ]; then
             echo "Code-Formatierung notwendig"
