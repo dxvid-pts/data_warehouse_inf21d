@@ -1,25 +1,28 @@
-import os
-import psycopg2
 import json
+import os
+
+import psycopg2
+
 
 def connect_to_db():
     """
     Creates a connection to the database and returns the connection and cursor.
     """
     try:
-        password = os.environ.get('PG_PASSWORD')
+        password = os.environ.get("PG_PASSWORD")
         conn = psycopg2.connect(
-            database="dhbw", 
-            user="postgres", 
-            password=password, 
-            host="localhost", 
-            port="5432"
+            database="dhbw",
+            user="postgres",
+            password=password,
+            host="localhost",
+            port="5432",
         )
         cursor = conn.cursor()
         return conn, cursor
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
         return None, None
+
 
 def create_table_if_not_exist():
     """
@@ -49,6 +52,7 @@ def create_table_if_not_exist():
         finally:
             cursor.close()
             conn.close()
+
 
 def write_row(payload):
     """
